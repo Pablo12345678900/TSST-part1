@@ -1,0 +1,17 @@
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\bin\Release\TSST.exe.config
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\bin\Release\TSST.exe
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\bin\Release\TSST.pdb
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\bin\Release\Tools.dll
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\bin\Release\Tools.pdb
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\Host.csprojAssemblyReference.cache
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\MainWindow.g.cs
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\App.g.cs
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST_MarkupCompile.cache
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST_MarkupCompile.lref
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\MainWindow.baml
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST.g.resources
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST.Properties.Resources.resources
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\Host.csproj.GenerateResource.cache
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\Host.csproj.CopyComplete
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST.exe
+C:\Users\pawer\Desktop\C#-Learning\TSST\TSST\obj\Release\TSST.pdb

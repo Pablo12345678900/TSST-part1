@@ -1,0 +1,29 @@
+﻿<Window x:Class="TSST.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TSST"
+        mc:Ignorable="d"
+        Title="Host" Height="483.471" Width="723.76">
+    <Grid RenderTransformOrigin="0.49,0.495" Margin="0,0,92,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="82*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="334*"/>
+            <ColumnDefinition Width="58*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="comboBox1" Margin="34,146,55,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2" Grid.Column="3" SelectionChanged="comboBox1_SelectionChanged"/>
+        <Button x:Name="SendMessage" Content="Send Message" HorizontalAlignment="Left" Margin="46,78,0,0" VerticalAlignment="Top" Width="199" Height="107" Grid.Column="4" Grid.ColumnSpan="3"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" Margin="34,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Grid.Column="3"/>
+        <Label Content="Message" HorizontalAlignment="Left" Margin="41,78,0,0" VerticalAlignment="Top" Width="90" Height="30" Grid.ColumnSpan="4"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="41,146,0,0" VerticalAlignment="Top" Width="62" Height="26" Grid.ColumnSpan="4"/>
+        <ListBox Grid.ColumnSpan="4" Grid.Column="3" HorizontalAlignment="Left" Height="167" Margin="34,234,0,0" VerticalAlignment="Top" Width="418"/>
+        <Label Content="Host Logs" Grid.Column="4" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="39" Width="110" Grid.ColumnSpan="3"/>
+
+    </Grid>
+</Window>
