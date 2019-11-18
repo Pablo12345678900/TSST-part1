@@ -57,14 +57,14 @@ namespace TSST
             try
             {
                 connectedSocket = new MultiSocket(hostSource.cloudIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp); // Stream uses TCP protocol
-                connectedSocket.Connect(new IPEndPoint(hostSource.cloudIP, hostSource.cloudPort));
-                Task.Run(() => WaitForPackage()); // after connecting with the cloud, host starts waiting for package
+                connectedSocket.Connect(new IPEndPoint(hostSource.cloudIP, hostSource.cloudPort)); //connect with server
+                Task.Run(WaitForPackage); // after connecting with the cloud, host starts waiting for package
             }
             catch (SocketException e)
             {
                 Dispatcher.Invoke(() => AddLog("Can't get connection with connection", LogType.Failure));
                 Dispatcher.Invoke(() => AddLog("Connecting with Cloud one more time", LogType.Informative));
-                Task.Run(() => GetConnectionWithCloud());
+                Task.Run( GetConnectionWithCloud);
             }
 
         }
@@ -87,13 +87,11 @@ namespace TSST
         public void fillTheComboBox()
         {
             comboBox1.Items.Clear();
-            
-            hostSource.Neighbours.ForEach(host => comboBox1.Items.Add(host));
-            
-                // str = hostSource.Neighbours[i].Name;
-                
-                
-           
+
+            for(int i=0; i<hostSource.Neighbours.Count;i++)
+            {
+                comboBox1.Items.Add(hostSource.Neighbours[i]);
+            }
         }
         public void sendPackage()
         {
@@ -119,7 +117,7 @@ namespace TSST
             }
             catch (SocketException e)
             {
-                Dispatcher.
+               // Dispatcher.
             }
         }
 
@@ -147,7 +145,7 @@ namespace TSST
         }
         public void AddLog(string info,  LogType logType)
         {
-
+            // to complete
         }
     }
 }

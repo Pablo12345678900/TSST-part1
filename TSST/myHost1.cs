@@ -43,6 +43,7 @@ namespace TSST
 
 
             RestOfHosts neighbour;
+
             while ((line = streamReader.ReadLine()) != null)
             {
                 neighbour = new RestOfHosts(line);

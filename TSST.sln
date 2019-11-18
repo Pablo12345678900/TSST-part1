@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "TSST\Host.csproj", "{5217A1AB-5601-4F4C-BCD0-DF4D8E2E33FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{AB696B27-C60E-4949-8A0F-7C708841DA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{AB696B27-C60E-4949-8A0F-7C708841DA54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CableCloud", "CableCloud\CableCloud.csproj", "{6CB126A8-FA6B-488E-8A04-969E378C66BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{AB696B27-C60E-4949-8A0F-7C708841DA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB696B27-C60E-4949-8A0F-7C708841DA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB696B27-C60E-4949-8A0F-7C708841DA54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB126A8-FA6B-488E-8A04-969E378C66BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB126A8-FA6B-488E-8A04-969E378C66BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB126A8-FA6B-488E-8A04-969E378C66BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB126A8-FA6B-488E-8A04-969E378C66BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
