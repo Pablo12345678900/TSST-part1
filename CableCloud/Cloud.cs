@@ -8,12 +8,12 @@ namespace CableCloud
 {
    public class Cloud
     {
-        List<Cable> cables { get; set; }
+        public List<Cable> cables { get; set; }
         public IPAddress cloudIp { get; set; }
-        public ushort cloudPort { get; set; } // one port for cloud is enough, many sockets can operate on one port
+        public int cloudPort { get; set; } // one port for cloud is enough, many sockets can operate on one port
         
 
-        public Cloud(IPAddress adr, ushort cp)
+        public Cloud(IPAddress adr, int cp)
         {
             cables = new List<Cable>();
             cloudIp = adr;
@@ -27,7 +27,7 @@ namespace CableCloud
             line = streamReader.ReadLine();
             IPAddress address = IPAddress.Parse(line.Split(' ')[1]);
             line = streamReader.ReadLine();
-            ushort port = ushort.Parse(line.Split(' ')[1]);
+            int port = int.Parse(line.Split(' ')[1]);
             Cloud cloud = new Cloud(address, port);
             while((line=streamReader.ReadLine())!=null)
             {

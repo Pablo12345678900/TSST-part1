@@ -41,25 +41,49 @@ namespace CableCloud
             // cloud is waiting for events
             Socket connectedSocketServer = new Socket(cableCloud.cloudIp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             connectedSocketServer.Bind(new IPEndPoint(cableCloud.cloudIp, cableCloud.cloudPort)); //cloud is the server
-            byte[] buffor = new byte[128];
+            
             while(true)
             {
-                connectedSocketServer.Listen(50); // max number of connections is 50, waiting for actions
+                byte[] buffer = new byte[128];
+                connectedSocketServer.Listen(1); 
                 Socket handler=connectedSocketServer.Accept();
-                handler.Receive(buffor);
+                handler.Receive(buffer);
 
-              //  Package package = new Package();
-                //package = package.returnToPackage(buffor);
-
-
+                Package package = new Package();
+                package = package.returnToPackage(buffer);
+                IPAddress node1 = package.CurrentNode;
+                int port1 = package.Port;
+                //find the propoer end point of cable
+                for (int i=0; i<cableCloud.cables.Count;i++)
+                {
+                    if((node1== cableCloud.cables[i].Node1 && port1==cableCloud.cables[i].port1))
+                    {
+                        if (cableCloud.cables[i].stateOfCable == "WORKING")
+                        {
+                            package.CurrentNode = cableCloud.cables[i].Node2;
+                            package.Port = cableCloud.cables[i].port2;
+                            break;
+                        }
+                        else
+                        {
+                            AddLog();
+                        }
+                    }
+                    if(node1 == cableCloud.cables[i].Node2 && port1 == cableCloud.cables[i].port2)
+                    {
+                        package.CurrentNode = cableCloud.cables[i].Node1;
+                        package.Port = cableCloud.cables[i].port1;
+                        break;
+                    }
+                }
+                 ((IPEndPoint)connectedSocketServer.RemoteEndPoint).Port = package.Port;
+                 ((IPEndPoint)connectedSocketServer.RemoteEndPoint).Address = package.CurrentNode;
+                 handler.Send(buffer);
             }
-
-
         }
-        public void ReceiveAndSendPacket()
+        public void AddLog()
         {
-            MultiSocket receiver = new MultiSocket(cableCloud.cloudIp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            Package recPackage = receiver.ReceivePackage();
+            // to complete
         }
     }
 }
