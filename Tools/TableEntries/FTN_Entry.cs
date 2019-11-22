@@ -5,5 +5,10 @@ namespace Tools.Table_Entries
         public int NHLFE_ID { get; set; }
         public int FEC { get; set; }
 
+        public FTN_Entry(int nhlfeId, int fec)
+        {
+            NHLFE_ID = nhlfeId;
+            FEC = fec;
+        }
     }
 }

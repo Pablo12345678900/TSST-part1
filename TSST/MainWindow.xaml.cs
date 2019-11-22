@@ -64,7 +64,7 @@ namespace TSST
             {
                 Dispatcher.Invoke(() => AddLog("Can't get connection with connection", LogType.Failure));
                 Dispatcher.Invoke(() => AddLog("Connecting with Cloud one more time", LogType.Informative));
-                Task.Run(GetConnectionWithCloud);
+                Task.Run( GetConnectionWithCloud);
             }
 
         }
@@ -102,8 +102,6 @@ namespace TSST
             ++counterForMessageID;
             package.messageID = counterForMessageID;
             package.Port = hostSource.portOut;
-            package.CurrentNode = hostSource.host_IP;
-
             var syncTask = new Task(() =>
             {
                 package.payload = textBox1.Text;
