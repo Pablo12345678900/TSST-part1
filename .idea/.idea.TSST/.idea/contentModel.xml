@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="CableCloud" t="IncludeRecursive">
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Cable.cs" t="Include" />
+        <e p="CableCloud.csproj" t="IncludeRecursive" />
+        <e p="Cloud.cs" t="Include" />
+        <e p="DataForCloud.txt" t="Include" />
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="CableCloud.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Node" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Forwarding.cs" t="Include" />
+        <e p="Node.csproj" t="IncludeRecursive" />
+        <e p="NodeProgram.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Node.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="PackageHandler.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Tools" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Label.cs" t="Include" />
+        <e p="LabelStack.cs" t="Include" />
+        <e p="MultiSocket.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Tools.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Package.cs" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="TableEntries" t="Include">
+          <e p="FEC_Entry.cs" t="Include" />
+          <e p="FIB_Entry.cs" t="Include" />
+          <e p="FTN_Entry.cs" t="Include" />
+          <e p="ILM_Entry.cs" t="Include" />
+          <e p="NHLFE_Entry.cs" t="Include" />
+        </e>
+        <e p="Tools.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="TSST" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="App.xaml" t="Include" />
+        <e p="App.xaml.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Host.csproj" t="IncludeRecursive" />
+        <e p="MainWindow.xaml" t="Include" />
+        <e p="MainWindow.xaml.cs" t="Include" />
+        <e p="myHost1.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="Resources.Designer.cs" t="Include" />
+          <e p="Resources.resx" t="Include" />
+          <e p="Settings.Designer.cs" t="Include" />
+          <e p="Settings.settings" t="Include" />
+        </e>
+        <e p="RestOfHosts.cs" t="Include" />
+      </e>
+      <e p="TSST.sln" t="IncludeFlat" />
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_TSST.1984370782.00" t="ExcludeRecursive" />
+  </component>
+</project>

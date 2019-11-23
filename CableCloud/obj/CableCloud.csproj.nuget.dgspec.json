@@ -1,34 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\CableCloud\\CableCloud.csproj": {}
+    "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/CableCloud/CableCloud.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\CableCloud\\CableCloud.csproj": {
+    "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/CableCloud/CableCloud.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\CableCloud\\CableCloud.csproj",
+        "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/CableCloud/CableCloud.csproj",
         "projectName": "CableCloud",
-        "projectPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\CableCloud\\CableCloud.csproj",
-        "packagesPath": "C:\\Users\\pawer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\CableCloud\\obj\\",
+        "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/CableCloud/CableCloud.csproj",
+        "packagesPath": "/Users/Pawel/.nuget/packages/",
+        "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/CableCloud/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pawer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Pawel/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\Tools.csproj": {
-                "projectPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\Tools.csproj"
+              "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj": {
+                "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj"
               }
             }
           }
@@ -54,24 +55,25 @@
         }
       }
     },
-    "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\Tools.csproj": {
+    "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\Tools.csproj",
+        "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj",
         "projectName": "Tools",
-        "projectPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\Tools.csproj",
-        "packagesPath": "C:\\Users\\pawer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST\\Tools\\obj\\",
+        "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj",
+        "packagesPath": "/Users/Pawel/.nuget/packages/",
+        "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\pawer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Pawel/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

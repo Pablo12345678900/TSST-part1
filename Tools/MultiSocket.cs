@@ -7,6 +7,7 @@ namespace Tools
 {
    public class MultiSocket : Socket 
     {
+        
         public MultiSocket(AddressFamily addressFamily,SocketType socketType, ProtocolType protocolType) : base(addressFamily,socketType, protocolType)
         {
             ReceiveTimeout = 5000000; // 5 seconds wait for package
