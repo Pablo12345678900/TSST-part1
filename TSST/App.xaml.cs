@@ -14,10 +14,6 @@ namespace Host
     /// </summary>
     public partial class App : Application
     {
-        void jakasfunkcja()
-        {
-            var multi = new Label();
-        }
     }
 
     

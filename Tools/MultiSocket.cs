@@ -9,7 +9,7 @@ namespace Tools
     {
         public MultiSocket(AddressFamily addressFamily,SocketType socketType, ProtocolType protocolType) : base(addressFamily,socketType, protocolType)
         {
-            // modyfikujemy coś tutaj?
+            ReceiveTimeout = 5000000; // 5 seconds wait for package
         }
         public int SendPackage(Package package)
         {
@@ -19,8 +19,8 @@ namespace Tools
         {
             byte[] buffer = new byte[128];
             Receive(buffer);
-            Package rec = new Package();
-            return rec.returnToPackage(buffer);
+            //Package rec = new Package();
+            return Package.returnToPackage(buffer);
         }
     }
 }

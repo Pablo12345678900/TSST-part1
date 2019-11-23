@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Tools;
 using System.Data;
+using System.Threading;
 
 namespace TSST
 {
@@ -31,9 +32,11 @@ namespace TSST
         public int counterForMessageID = 0;
         public MultiSocket connectedSocket { get; set; }
         public enum LogType { Successful, Informative, Failure }
-        public MainWindow()
+        
+         public MainWindow()
         {
             var args = Environment.GetCommandLineArgs();
+            
             InitializeComponent();
             try
             {
@@ -48,38 +51,51 @@ namespace TSST
             {
                 Environment.Exit(1);
             }
-            Task.Run(() => GetConnectionWithCloud());
+            Task.Run(GetConnectionWithCloud);
             
         }
+         
+         
+         
         public void GetConnectionWithCloud()
         {
-            Dispatcher.Invoke(() => AddLog("Attempt to connect with Cloud", LogType.Informative));
+            //ListBox12.Items.Add("Trying getting connection");
             try
             {
+                //ListBox12.Items.Add("Dupa");
+                
                 connectedSocket = new MultiSocket(hostSource.cloudIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp); // Stream uses TCP protocol
                 connectedSocket.Connect(new IPEndPoint(hostSource.cloudIP, hostSource.cloudPort)); //connect with server
-                Task.Run(WaitForPackage); // after connecting with the cloud, host starts waiting for package
+                connectedSocket.Send(Encoding.ASCII.GetBytes("First Message " + hostSource.host_IP.ToString()));
+
             }
             catch (SocketException e)
             {
-                Dispatcher.Invoke(() => AddLog("Can't get connection with connection", LogType.Failure));
-                Dispatcher.Invoke(() => AddLog("Connecting with Cloud one more time", LogType.Informative));
-                Task.Run( GetConnectionWithCloud);
+                ListBox12.Items.Add("Cant get connection");
+                Task.Run(GetConnectionWithCloud);
             }
+          
+            Task.Run(WaitForPackage);
 
         }
         public void WaitForPackage()
         {
+            //ListBox12.Items.Add("DUPA");
+            int i = 0;
             while (true) // host is waiting/listening for a package 
             {
+                
                 try
                 {
-                    Package package = connectedSocket.ReceivePackage();
+                    Dispatcher.Invoke(() =>ListBox12.Items.Add(i));
+                    i += 1;
+                    Package package= connectedSocket.ReceivePackage();
+                    Dispatcher.Invoke(() => ListBox12.Items.Add(package.payload));
                     // if we receive-> Add log in HostWindow
                 }
                 catch (SocketException e)
                 {
-
+                    
                 }
             }
         }
@@ -96,46 +112,50 @@ namespace TSST
         public void sendPackage()
         {
             Package package = new Package();
-            package.SourceAddress = hostSource.host_IP;
+                package.SourceAddress = hostSource.host_IP;
 
-            package.TTL = package.TTL - 1;
-            ++counterForMessageID;
-            package.messageID = counterForMessageID;
-            package.Port = hostSource.portOut;
-            var syncTask = new Task(() =>
-            {
-                package.payload = textBox1.Text;
-                package.DestinationAddress = ((RestOfHosts)comboBox1.SelectedItem).ip;
-            });
-            syncTask.RunSynchronously();
-
+                package.TTL = (ushort) (package.TTL - 1);
+                ++counterForMessageID;
+                package.messageID = counterForMessageID;
+                package.Port = hostSource.portOut;
+                package.CurrentNodeIP = hostSource.host_IP;
+                //ListBox12.Items.Add("Give attributes...");
+                Dispatcher.Invoke(() =>
+                {
+                    package.payload = textBox1.Text;
+                    package.DestinationAddress = ((RestOfHosts) comboBox1.SelectedItem).ip;
+                });
+                    
+               
+            
             try
             {
-                connectedSocket.Send(package.convertToBytes());
-                Dispatcher.Invoke(() => AddLog($"Package has been sent: {package}", LogType.Successful));
-                // add log that package has been sent
+                    Dispatcher.Invoke(() => ListBox12.Items.Add("TRY SEND"));
+                    connectedSocket.SendPackage(package);
+                    Dispatcher.Invoke(() => ListBox12.Items.Add("Package sent"));
+                    
             }
-            catch (SocketException e)
-            {
-               // Dispatcher.
-            }
+            catch (Exception e)
+                {
+                    ListBox12.Items.Add("Problem with sending");
+                }
+            
         }
 
         public void unableButton()
         {
-            SendMessage.IsEnabled = (textBox1.Text != null && comboBox1.SelectedItem != null);
+            SendMessage.IsEnabled = (comboBox1.SelectedItem != null);
         }
 
-        public void SendMessage_Click(object sender, EventArgs e)
+        public  void SendMessage_Click(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
+           // ListBox12.Items.Add("Clicked");
+          
                 sendPackage();
-                textBox1.Clear();
                 comboBox1.SelectedItem = null;
+                textBox1.Text = null;
                 unableButton();
-            });
-            //throw new System.NotImplementedException();
+                //throw new System.NotImplementedException();
         }
 
         private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -143,9 +163,6 @@ namespace TSST
             hostdestination = (RestOfHosts)comboBox1.SelectedItem;
             unableButton();
         }
-        public void AddLog(string info,  LogType logType)
-        {
-            // to complete
-        }
+       
     }
 }

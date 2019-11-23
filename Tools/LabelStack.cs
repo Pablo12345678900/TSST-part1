@@ -6,7 +6,7 @@ namespace Tools
 {
     public class LabelStack
     {
-        public Stack<Label> labels { get; set; }
+        Stack<Label> labels { get; set; }
 
         public const byte stackEmpty = 0x00;
         public const byte stackNotEmpty = 0xff;
@@ -15,7 +15,8 @@ namespace Tools
         {
             labels = new Stack<Label>();
         }
-        
+
+
 
         public byte[] GetStackInBytes()
         {
@@ -39,7 +40,7 @@ namespace Tools
             }
             return bytes.ToArray();
         }
-        public LabelStack returnToStack(byte [] bytes)
+        public static LabelStack returnToStack(byte [] bytes)
         {
             LabelStack my_Stack = new LabelStack();
             int id = 1;
@@ -50,7 +51,8 @@ namespace Tools
                 {
                     Label label = new Label //construction of label: | label_Number 2 bytes | TTL 1 byte | INFO 1 byte |
                     {
-                        labelNumber = (short)((bytes[id + 1] << 8) + bytes[id]),
+                        label_Number = (short)((bytes[id + 1] << 8) + bytes[id]),
+                        TTL = (short)bytes[id + 2]
                     };
 
                     my_Stack.labels.Push(label);

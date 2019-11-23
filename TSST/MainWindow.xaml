@@ -18,12 +18,12 @@
             <ColumnDefinition Width="58*"/>
         </Grid.ColumnDefinitions>
         <ComboBox x:Name="comboBox1" Margin="34,146,55,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2" Grid.Column="3" SelectionChanged="comboBox1_SelectionChanged"/>
-        <Button x:Name="SendMessage" Content="Send Message" HorizontalAlignment="Left" Margin="46,78,0,0" VerticalAlignment="Top" Width="199" Height="107" Grid.Column="4" Grid.ColumnSpan="3"/>
+        <Button x:Name="SendMessage" Content="Send Message" HorizontalAlignment="Left" Margin="46,78,0,0" VerticalAlignment="Top" Width="199" Height="107" Grid.Column="4" Grid.ColumnSpan="3" Click="SendMessage_Click"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="30" Margin="34,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="137" Grid.ColumnSpan="2" Grid.Column="3"/>
         <Label Content="Message" HorizontalAlignment="Left" Margin="41,78,0,0" VerticalAlignment="Top" Width="90" Height="30" Grid.ColumnSpan="4"/>
         <Label Content="Address" HorizontalAlignment="Left" Margin="41,146,0,0" VerticalAlignment="Top" Width="62" Height="26" Grid.ColumnSpan="4"/>
-        <ListBox Grid.ColumnSpan="4" Grid.Column="3" HorizontalAlignment="Left" Height="167" Margin="34,234,0,0" VerticalAlignment="Top" Width="418"/>
-        <Label Content="Host Logs" Grid.Column="4" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="39" Width="110" Grid.ColumnSpan="3"/>
+        <Label Content="Host Logs" Grid.Column="4" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Height="39" Width="63"/>
+        <ListBox x:Name="ListBox12" Grid.ColumnSpan="4" Grid.Column="3" HorizontalAlignment="Left" Height="132" Margin="49,257,0,0" VerticalAlignment="Top" Width="349"/>
 
     </Grid>
 </Window>
