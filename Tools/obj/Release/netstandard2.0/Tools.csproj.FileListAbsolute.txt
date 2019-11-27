@@ -6,3 +6,11 @@ C:\Users\pawer\Desktop\C#-Learning\TSST\Tools\obj\Release\netstandard2.0\Tools.A
 C:\Users\pawer\Desktop\C#-Learning\TSST\Tools\obj\Release\netstandard2.0\Tools.dll
 C:\Users\pawer\Desktop\C#-Learning\TSST\Tools\obj\Release\netstandard2.0\Tools.pdb
 C:\Users\pawer\Desktop\C#-Learning\TSST\Tools\obj\Release\netstandard2.0\Tools.csprojAssemblyReference.cache
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Release\netstandard2.0\Tools.deps.json
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Release\netstandard2.0\Tools.dll
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Release\netstandard2.0\Tools.pdb
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Release\netstandard2.0\Tools.csprojAssemblyReference.cache
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Release\netstandard2.0\Tools.AssemblyInfoInputs.cache
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Release\netstandard2.0\Tools.AssemblyInfo.cs
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Release\netstandard2.0\Tools.dll
+C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Release\netstandard2.0\Tools.pdb

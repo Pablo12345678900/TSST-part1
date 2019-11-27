@@ -7,7 +7,7 @@ namespace TSST
 {
     public class myHost
     {
-
+       
         public List<RestOfHosts> Neighbours { get; set; } // rest of hosts in site
         public IPAddress host_IP { get; set; }
         public string hostName { get; set; } // H1, H2 etc...
@@ -18,6 +18,7 @@ namespace TSST
         public myHost()
         {
            Neighbours= new List<RestOfHosts>();
+           
         }
        
         public static myHost createHost(string ConFile)
@@ -46,6 +47,10 @@ namespace TSST
 
             while ((line = streamReader.ReadLine()) != null)
             {
+                string Name = line.Split(' ')[0];
+                IPAddress ip = IPAddress.Parse(line.Split(' ')[1]);
+                
+                
                 neighbour = new RestOfHosts(line);
                 host.Neighbours.Add(neighbour);
             }

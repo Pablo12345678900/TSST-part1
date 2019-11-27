@@ -27,16 +27,22 @@ namespace CableCloud
     //
     /// </summary>
 // State object for reading client data asynchronously  
-    public class StateObject {  
+    public class StateObject
+    {
         // Client  socket.  
-        public Socket workSocket = null;  
+        public Socket workSocket = null;
+
         // Size of receive buffer.  
-        public const int BufferSize = 1024;  
+        public const int BufferSize = 128;
+
         // Receive buffer.  
-        public byte[] buffer = new byte[BufferSize];  
+        public byte[] buffer=new byte[BufferSize];
+
 // Received data string.  
-        public StringBuilder sb = new StringBuilder();    
-    } 
+        public StringBuilder sb = new StringBuilder();
+    }
+    
+    
     public partial class MainWindow : Window
     {
         public ManualResetEvent thread1=new ManualResetEvent(false);
@@ -78,7 +84,7 @@ namespace CableCloud
                 socketServer.Bind(new IPEndPoint(cableCloud.cloudIp, cableCloud.cloudPort)); //cloud is the server
                 
                 Console.WriteLine("Binded");
-                
+               
             }
             catch (Exception e)
             {

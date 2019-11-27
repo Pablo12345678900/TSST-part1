@@ -30,7 +30,7 @@ namespace TSST
         public RestOfHosts hostdestination { get; set; }
 
         public int counterForMessageID = 0;
-        public MultiSocket connectedSocket { get; set; }
+        public Socket connectedSocket { get; set; }
         public enum LogType { Successful, Informative, Failure }
         
          public MainWindow()
@@ -64,7 +64,7 @@ namespace TSST
             {
                 //ListBox12.Items.Add("Dupa");
                 
-                connectedSocket = new MultiSocket(hostSource.cloudIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp); // Stream uses TCP protocol
+                connectedSocket = new Socket(hostSource.cloudIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp); // Stream uses TCP protocol
                 connectedSocket.Connect(new IPEndPoint(hostSource.cloudIP, hostSource.cloudPort)); //connect with server
                 connectedSocket.Send(Encoding.ASCII.GetBytes("First Message " + hostSource.host_IP.ToString()));
 
@@ -81,15 +81,13 @@ namespace TSST
         public void WaitForPackage()
         {
             //ListBox12.Items.Add("DUPA");
-            int i = 0;
             while (true) // host is waiting/listening for a package 
             {
-                
+                byte[] buffer = new byte [128];
                 try
                 {
-                    Dispatcher.Invoke(() =>ListBox12.Items.Add(i));
-                    i += 1;
-                    Package package= connectedSocket.ReceivePackage();
+                    connectedSocket.Receive(buffer);
+                    Package package= Package.returnToPackage(buffer);
                     Dispatcher.Invoke(() => ListBox12.Items.Add(package.payload));
                     // if we receive-> Add log in HostWindow
                 }
@@ -104,21 +102,22 @@ namespace TSST
         {
             comboBox1.Items.Clear();
 
-            for(int i=0; i<hostSource.Neighbours.Count;i++)
+            foreach (var host in hostSource.Neighbours)
             {
-                comboBox1.Items.Add(hostSource.Neighbours[i]);
+                comboBox1.Items.Add(host);
             }
+            
         }
         public void sendPackage()
         {
             Package package = new Package();
-                package.SourceAddress = hostSource.host_IP;
+            package.SourceAddress = hostSource.host_IP;
 
-                package.TTL = (ushort) (package.TTL - 1);
-                ++counterForMessageID;
-                package.messageID = counterForMessageID;
-                package.Port = hostSource.portOut;
-                package.CurrentNodeIP = hostSource.host_IP;
+            package.TTL = (ushort) (package.TTL - 1); 
+            ++counterForMessageID;
+            package.messageID = counterForMessageID;
+            package.Port = hostSource.portOut;
+            package.CurrentNodeIP = hostSource.host_IP;
                 //ListBox12.Items.Add("Give attributes...");
                 Dispatcher.Invoke(() =>
                 {
@@ -131,7 +130,8 @@ namespace TSST
             try
             {
                     Dispatcher.Invoke(() => ListBox12.Items.Add("TRY SEND"));
-                    connectedSocket.SendPackage(package);
+                    byte [] buffer=package.convertToBytes();
+                    connectedSocket.Send(buffer);
                     Dispatcher.Invoke(() => ListBox12.Items.Add("Package sent"));
                     
             }
@@ -150,11 +150,10 @@ namespace TSST
         public  void SendMessage_Click(object sender, EventArgs e)
         {
            // ListBox12.Items.Add("Clicked");
-          
-                sendPackage();
-                comboBox1.SelectedItem = null;
-                textBox1.Text = null;
-                unableButton();
+           sendPackage();
+            comboBox1.SelectedItem = null;
+            textBox1.Text = null;
+            unableButton();
                 //throw new System.NotImplementedException();
         }
 

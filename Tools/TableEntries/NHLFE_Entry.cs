@@ -7,12 +7,12 @@ namespace Tools.Table_Entries
         
         public int NHLFE_ID { get; set; }
         public string action { get; set; }
-        public List<int> labelsOut { get; set; }
-        public int portOut { get; set; }
+        public List<ushort> labelsOut { get; set; }
+        public ushort portOut { get; set; }
         
         public int popDepth { get; set; }
 
-        public NHLFE_Entry(int nhlfeId, string action, List<int> labelsOut, int portOut, int popDepth)
+        public NHLFE_Entry(int nhlfeId, string action, List<ushort> labelsOut, ushort portOut, int popDepth)
         {
             NHLFE_ID = nhlfeId;
             this.action = action;
