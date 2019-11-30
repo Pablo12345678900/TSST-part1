@@ -33,11 +33,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Node/Node.csproj",
+      "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST_part1/Node/Node.csproj",
       "projectName": "Node",
-      "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Node/Node.csproj",
+      "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST_part1/Node/Node.csproj",
       "packagesPath": "/Users/Pawel/.nuget/packages/",
-      "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Node/obj/",
+      "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST_part1/Node/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -54,8 +54,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj": {
-              "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST-part1/Tools/Tools.csproj"
+            "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST_part1/Tools/Tools.csproj": {
+              "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSST_part1/Tools/Tools.csproj"
             }
           }
         }

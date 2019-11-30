@@ -15,8 +15,7 @@ namespace Tools
         {
             labels = new Stack<Label>();
         }
-
-
+        
 
         public byte[] GetStackInBytes()
         {
@@ -51,8 +50,7 @@ namespace Tools
                 {
                     Label label = new Label //construction of label: | label_Number 2 bytes | TTL 1 byte | INFO 1 byte |
                     {
-                        labelNumber = (ushort)((bytes[id + 1] << 8) + bytes[id]),
-                        TTL = (short)bytes[id + 2]
+                        labelNumber = (short)((bytes[id + 1] << 8) + bytes[id]),
                     };
 
                     my_Stack.labels.Push(label);
@@ -77,7 +75,7 @@ namespace Tools
         {
             if(this.Empty())
             {
-                return 1; // contain only informative byte that stack is empty/full
+                return 1;
             }
             else
             {
