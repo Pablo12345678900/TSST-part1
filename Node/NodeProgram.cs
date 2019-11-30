@@ -14,12 +14,12 @@ namespace Node
         private IPAddress cloudIpAddress { get; set; }
         private IPAddress managerIpAddress { get; set; }
 
-        private PackageHandler packageHandler;
+        static PackageHandler packageHandler;
 
         private short managerPort;
         private short cloudPort;
 
-        public NodeProgram()
+        NodeProgram()
         {
             packageHandler = new PackageHandler();
         }
@@ -28,8 +28,20 @@ namespace Node
         static void Main(string[] args)
         {
             test();
+            Routing routing;
+            try
+            { 
+                routing=Routing.createRouter(args[1]);
+            }
+            catch (Exception e)
+            { 
+                Console.WriteLine(e);
+                throw;
+            }
+            routing.ActivateRouter();
+            
         }
-
+        
         static void test()
         {
             NodeProgram node = new NodeProgram();
@@ -51,9 +63,8 @@ namespace Node
         void test1()
         {
             Console.WriteLine("Test 1");
-            
             packageHandler.FEC_Table.Add(new FEC_Entry(IPAddress.Parse("127.0.0.15"), 2));
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(1, "push", new List <int> {5}, 423,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(1, "push", new List <ushort> {5}, 423,0));
             packageHandler.FTN_Table.Add(new FTN_Entry(1, 2));
             
             Package package = new Package();
@@ -74,7 +85,7 @@ namespace Node
         {
             Console.WriteLine("Test 2");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(2, "swap", new List<int> {6}, 455,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(2, "swap", new List<ushort> {6}, 455,0));
             packageHandler.ILM_Table.Add(new ILM_Entry(322,1,2));
             
             Package package = new Package();
@@ -94,7 +105,7 @@ namespace Node
         {
             Console.WriteLine("Test 3");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(3, "pop", new List<int> {0}, 555,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(3, "pop", new List<ushort> {0}, 555,0));
             packageHandler.ILM_Table.Add(new ILM_Entry(499,13,3));
 
             Package package3 = new Package();
@@ -138,7 +149,7 @@ namespace Node
         {
             Console.WriteLine("Test 5");
                         
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(5, "push", new List<int> {6,4,7}, 578,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(5, "push", new List<ushort> {6,4,7}, 578,0));
             packageHandler.ILM_Table.Add(new ILM_Entry(511,20,5));
 
             Package package5 = new Package();
@@ -158,7 +169,7 @@ namespace Node
         {
             Console.WriteLine("Test 6");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(6, "pop", new List<int> {27}, 627,1));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(6, "pop", new List<ushort> {27}, 627,1));
             packageHandler.ILM_Table.Add(new ILM_Entry(600,21,6));
 
             Package package6 = new Package();
@@ -180,7 +191,7 @@ namespace Node
         {
             Console.WriteLine("Test 7");
 
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(7, "swap", new List<int> {35}, 730,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(7, "swap", new List<ushort> {35}, 730,0));
             packageHandler.ILM_Table.Add(new ILM_Entry(700,30,7));
 
             Package package7 = new Package();
@@ -203,7 +214,7 @@ namespace Node
         {
             Console.WriteLine("Test 8");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(8, "swap", new List<int> {47}, 830,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(8, "swap", new List<ushort> {47}, 830,0));
             packageHandler.ILM_Table.Add(new ILM_Entry(800,40,8));
 
             Package package8 = new Package();
@@ -225,7 +236,7 @@ namespace Node
         {
             Console.WriteLine("Test 9");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(9, "pop", new List<int> {50}, 910,2));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(9, "pop", new List<ushort> {50}, 910,2));
             packageHandler.ILM_Table.Add(new ILM_Entry(900,59,9));
             
             Package package9 = new Package();

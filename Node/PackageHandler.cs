@@ -103,7 +103,7 @@ namespace Node
                             package.labelStack.labels.Pop();
                         }
                         
-                        foreach (int label in nhlfeEntry.labelsOut)
+                        foreach (ushort label in nhlfeEntry.labelsOut)
                         {
                             Label newLabel = new Label();
                             newLabel.labelNumber = label;
@@ -123,7 +123,7 @@ namespace Node
                         //swap
                         package.labelStack.labels.Pop();
                         
-                        foreach (int label in nhlfeEntry.labelsOut)
+                        foreach (ushort label in nhlfeEntry.labelsOut)
                         {
                             Label newLabel = new Label();
                             newLabel.labelNumber = label;
