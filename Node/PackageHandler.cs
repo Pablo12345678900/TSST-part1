@@ -25,7 +25,7 @@ namespace Node
             FIB_Table = new List<FIB_Entry>();
         }
 
-        public  void handlePackage(Package package)
+        public void handlePackage(Package package)
         {
             NHLFE_Entry nhlfeEntry = null;
             FIB_Entry fibEntry = null;
@@ -34,6 +34,7 @@ namespace Node
             {
                 if (package.labelStack.labels.Peek().labelNumber == 0)    // check if i'm last hop
                 {
+                    //getting rid of all '0' labels (pushed in penultimate router)
                     while (package.labelStack.labels.Peek().labelNumber == 0)
                     {
                         package.labelStack.labels.Pop();
@@ -43,10 +44,11 @@ namespace Node
                         }
                     }
 
+                    //if there are no labels left all tunnels are over. check fib table and return
                     if (!package.labelStack.labels.Any())
                     {
                         fibEntry = findFibEntry(package.DestinationAddress);
-                        package.Port = fibEntry.portOut;
+                        package.Port = (ushort) fibEntry.portOut;
                         return;
                     }
 
@@ -63,8 +65,6 @@ namespace Node
                 if (fecEntry != null)                         //adding label
                 {
                     FTN_Entry ftnEntry = findFtnEntry(fecEntry.FEC);
-                    Console.WriteLine("NHLFE " + ftnEntry.NHLFE_ID);
-
                     nhlfeEntry = findNhlfeEntry(ftnEntry.NHLFE_ID);
                 }
                 else                                         //forwarding by IPAddress
@@ -84,12 +84,11 @@ namespace Node
             if (nhlfeEntry != null)
             {
 
-                package.Port = nhlfeEntry.portOut;
+                package.Port = (ushort)nhlfeEntry.portOut;
                 switch (nhlfeEntry.action)
                 {
                     case "swap":
                     {
-                        
                         package.labelStack.labels.Pop();
 
                         Label newLabel = new Label();
@@ -104,7 +103,7 @@ namespace Node
                             package.labelStack.labels.Pop();
                         }
                         
-                        foreach (ushort label in nhlfeEntry.labelsOut)
+                        foreach (int label in nhlfeEntry.labelsOut)
                         {
                             Label newLabel = new Label();
                             newLabel.labelNumber = label;
@@ -115,16 +114,26 @@ namespace Node
                     }
                     case "pop":
                     {
+                        //pop labels to replace them with '0'
                         for (int i = 0; i < nhlfeEntry.popDepth; i++)
                         {
                             package.labelStack.labels.Pop();
                         }
                         
-                        for (int i = 0; i < nhlfeEntry.popDepth; i++)
+                        //swap
+                        package.labelStack.labels.Pop();
+                        
+                        foreach (int label in nhlfeEntry.labelsOut)
                         {
                             Label newLabel = new Label();
-                            newLabel.labelNumber = 0;
+                            newLabel.labelNumber = label;
                             package.labelStack.labels.Push(newLabel);
+                        }
+                        
+                        // add '0' labels 
+                        for (int i = 0; i < nhlfeEntry.popDepth; i++)
+                        {
+                            package.labelStack.labels.Push(new Label(0));
                         }
 
                         break;
@@ -141,7 +150,7 @@ namespace Node
             }
             else if (fibEntry != null)
             {
-                package.Port = fibEntry.portOut;
+                package.Port = (ushort) fibEntry.portOut;
             }
             else
             {
