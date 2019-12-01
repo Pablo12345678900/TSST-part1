@@ -46,6 +46,7 @@ namespace Node
             FTN_Table = new List<FTN_Entry>();
             FEC_Table = new List<FEC_Entry>();
             FIB_Table = new List<FIB_Entry>();
+            NHLFE_Table = new List<NHLFE_Entry>();
         }
 
         public static Routing createRouter(string conFile)
@@ -81,11 +82,36 @@ namespace Node
 
             byte[] buffer = new byte[256];
             Console.Write("Waiting for data from management system...");
-            SocketToManager.Receive(buffer);
-            // change buffer to tables...
+            byte[] msg = Encoding.ASCII.GetBytes(Name);
+
+            int bytesSent = SocketToManager.Send(msg);
+
+            String data = null;
+            while (true)
+            {
+               int bytesRec = SocketToManager.Receive(buffer);
+               data += Encoding.ASCII.GetString(buffer, 0, bytesRec);
+               if (data.IndexOf("</R_config>") > -1)
+                  {
+                     break;
+                   }
+              }
+
+                    XmlSerializer serializer = new XmlSerializer(typeof(R_config));
+                    R_config result;
+
+                    using (TextReader reader = new StringReader(data))
+                    {
+                        result = (R_config)serializer.Deserialize(reader);
+                    }
+               
+            ILM_Table = result.ILM;
+            FTN_Table = result.FTN;
+            FEC_Table = result.FEC;
+            FIB_Table = result.FIB;
+            NHLFE_Table = result.NHLFE;
             
-            //
-            SocketToManager.Send(Encoding.ASCII.GetBytes("ACK")); // confirmation
+            
             
             SocketToForward.Connect(new IPEndPoint(cloudIp,cloudPort));
             Thread forwardingThread=new Thread(WaitForPackage);
@@ -128,7 +154,31 @@ namespace Node
         {
             while (true)
             {
-                SocketToManager.Receive(bufferForManagement);
+                String data = null;
+
+
+                    while (true)
+                    {
+                        int bytesRec = SocketToManager.Receive(bufferForManagement);
+                        data += Encoding.ASCII.GetString(bufferForManagement, 0, bytesRec);
+                        if (data.IndexOf("</R_config>") > -1)
+                        {
+                            break;
+                        }
+                    }
+
+                    XmlSerializer serializer = new XmlSerializer(typeof(R_config));
+                    R_config result;
+
+                    using (TextReader reader = new StringReader(data))
+                    {
+                        result = (R_config)serializer.Deserialize(reader);
+                    }
+            ILM_Table = result.ILM;
+            FTN_Table = result.FTN;
+            FEC_Table = result.FEC;
+            FIB_Table = result.FIB;
+            NHLFE_Table = result.NHLFE;
                 
             }
         }
