@@ -165,7 +165,7 @@ namespace Node
             
             foreach(FEC_Entry item in FEC_Table )
             {
-                if (destinationAddress.Equals(item.destinationIP))
+                if (destinationAddress.ToString().Equals(item.destinationIP))
                 {
                     fecEntry = item;
                     break;
@@ -246,7 +246,7 @@ namespace Node
             FIB_Entry fibEntry = null;
             foreach(FIB_Entry item in FIB_Table)
             {
-                if (ipAddress.Equals(item.destinationIP) )
+                if (ipAddress.ToString().Equals(item.destinationIP) )
                 {
                     fibEntry = item;
                     break;

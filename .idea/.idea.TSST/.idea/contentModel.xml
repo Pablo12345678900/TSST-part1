@@ -20,9 +20,23 @@
           </e>
         </e>
       </e>
+      <e p="Manager" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Database.cs" t="Include" />
+        <e p="Manager.cs" t="Include" />
+        <e p="Manager.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Manager.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="R_config.cs" t="Include" />
+      </e>
       <e p="Node" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
-        <e p="Forwarding.cs" t="Include" />
         <e p="Node.csproj" t="IncludeRecursive" />
         <e p="NodeProgram.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
@@ -33,13 +47,13 @@
           </e>
         </e>
         <e p="PackageHandler.cs" t="Include" />
+        <e p="Routing.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Tools" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Label.cs" t="Include" />
         <e p="LabelStack.cs" t="Include" />
-        <e p="MultiSocket.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -80,6 +94,6 @@
       <e p="TSST.sln" t="IncludeFlat" />
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_TSST.1984370782.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_TSST.1926402653.00" t="ExcludeRecursive" />
   </component>
 </project>

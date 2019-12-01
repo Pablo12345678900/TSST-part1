@@ -63,7 +63,7 @@ namespace Node
         void test1()
         {
             Console.WriteLine("Test 1");
-            packageHandler.FEC_Table.Add(new FEC_Entry(IPAddress.Parse("127.0.0.15"), 2));
+            packageHandler.FEC_Table.Add(new FEC_Entry("127.0.0.15", 2));
             packageHandler.NHLFE_Table.Add(new NHLFE_Entry(1, "push", new List <ushort> {5}, 423,0));
             packageHandler.FTN_Table.Add(new FTN_Entry(1, 2));
             
@@ -126,7 +126,7 @@ namespace Node
         {
             Console.WriteLine("Test 4");
             
-            packageHandler.FIB_Table.Add(new FIB_Entry(IPAddress.Parse("123.123.123.123"), 480 ));
+            packageHandler.FIB_Table.Add(new FIB_Entry("123.123.123.123", 480 ));
 
             Package package4 = new Package();
             package4.DestinationAddress = IPAddress.Parse("123.123.123.123");

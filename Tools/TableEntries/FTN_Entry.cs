@@ -10,5 +10,7 @@ namespace Tools.Table_Entries
             NHLFE_ID = nhlfeId;
             FEC = fec;
         }
+        
+        public FTN_Entry() { }
     }
 }

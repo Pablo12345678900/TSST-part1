@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CableCloud", "CableCloud\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Node", "Node\Node.csproj", "{4D10E6AD-C875-470B-9337-9AA009C17F93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.csproj", "{FACCE0CF-A4F6-41E7-9E98-C0B7DC9C831F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4D10E6AD-C875-470B-9337-9AA009C17F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D10E6AD-C875-470B-9337-9AA009C17F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D10E6AD-C875-470B-9337-9AA009C17F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACCE0CF-A4F6-41E7-9E98-C0B7DC9C831F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACCE0CF-A4F6-41E7-9E98-C0B7DC9C831F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACCE0CF-A4F6-41E7-9E98-C0B7DC9C831F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACCE0CF-A4F6-41E7-9E98-C0B7DC9C831F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

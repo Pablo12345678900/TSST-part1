@@ -1,0 +1,47 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/Manager.csproj",
+    "projectName": "Manager",
+    "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/Manager.csproj",
+    "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/obj/",
+    "projectStyle": "PackageReference",
+    "fallbackFolders": [
+      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+    ],
+    "originalTargetFrameworks": [
+      "netcoreapp3.0"
+    ],
+    "sources": {
+      "https://api.nuget.org/v3/index.json": {}
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "projectReferences": {
+          "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/Tools.csproj": {
+            "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/Tools.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp3.0": {
+      "imports": [
+        "net461",
+        "net462",
+        "net47",
+        "net471",
+        "net472",
+        "net48"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

@@ -1,8 +1,24 @@
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Debug\netstandard2.0\Tools.deps.json
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Debug\netstandard2.0\Tools.dll
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\bin\Debug\netstandard2.0\Tools.pdb
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Debug\netstandard2.0\Tools.csprojAssemblyReference.cache
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Debug\netstandard2.0\Tools.AssemblyInfoInputs.cache
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Debug\netstandard2.0\Tools.AssemblyInfo.cs
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Debug\netstandard2.0\Tools.dll
-C:\Users\pawer\Desktop\C#-Learning\TSSTvol3\Tools\obj\Debug\netstandard2.0\Tools.pdb
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/bin/Debug/netstandard2.0/Tools.deps.json
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/bin/Debug/netstandard2.0/Tools.dll
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/bin/Debug/netstandard2.0/Tools.pdb
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/obj/Debug/netstandard2.0/Tools.csprojAssemblyReference.cache
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfoInputs.cache
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfo.cs
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/obj/Debug/netstandard2.0/Tools.dll
+C:/Users/pawer/Desktop/C#-Learning/TSSTvol3/Tools/obj/Debug/netstandard2.0/Tools.pdb
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/bin/Debug/netstandard2.0/Tools.deps.json
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/bin/Debug/netstandard2.0/Tools.dll
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/bin/Debug/netstandard2.0/Tools.pdb
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/obj/Debug/netstandard2.0/Tools.csprojAssemblyReference.cache
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfoInputs.cache
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfo.cs
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/obj/Debug/netstandard2.0/Tools.dll
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/TSSTwywalic/Tools/obj/Debug/netstandard2.0/Tools.pdb
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/bin/Debug/netstandard2.0/Tools.deps.json
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/bin/Debug/netstandard2.0/Tools.dll
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/bin/Debug/netstandard2.0/Tools.pdb
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/obj/Debug/netstandard2.0/Tools.csprojAssemblyReference.cache
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfoInputs.cache
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/obj/Debug/netstandard2.0/Tools.AssemblyInfo.cs
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/obj/Debug/netstandard2.0/Tools.dll
+/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/obj/Debug/netstandard2.0/Tools.pdb

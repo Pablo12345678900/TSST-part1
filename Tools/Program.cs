@@ -8,6 +8,7 @@ namespace Tools
         {
             Label label=new Label();
             label.labelNumber = 5;
+            label.TTL = 2;
             label.GetLabelAsBytes();
         }
     }

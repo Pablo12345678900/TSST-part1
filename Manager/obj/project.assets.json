@@ -1,0 +1,84 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "Tools/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Tools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Tools.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Tools/1.0.0": {
+      "type": "project",
+      "path": "../Tools/Tools.csproj",
+      "msbuildProject": "../Tools/Tools.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.0": [
+      "Tools >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/Pawel/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/Manager.csproj",
+      "projectName": "Manager",
+      "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/Manager.csproj",
+      "packagesPath": "/Users/Pawel/.nuget/packages/",
+      "outputPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Manager/obj/",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "/Users/Pawel/.config/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "projectReferences": {
+            "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/Tools.csproj": {
+              "projectPath": "/Users/Pawel/Documents/Pawel/Studia/sem 5/TSST/Tsst_part1_git/Tools/Tools.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.0": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true
+      }
+    }
+  }
+}
