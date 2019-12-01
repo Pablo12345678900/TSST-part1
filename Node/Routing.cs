@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using Tools;
 using System.Xml.Serialization;
+using ManagerApp;
 
 
 namespace Node

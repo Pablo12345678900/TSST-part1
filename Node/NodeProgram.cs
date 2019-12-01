@@ -105,7 +105,7 @@ namespace Node
         {
             Console.WriteLine("Test 3");
             
-            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(3, "pop", new List<ushort> {0}, 555,0));
+            packageHandler.NHLFE_Table.Add(new NHLFE_Entry(3, "pop", new List<ushort> { }, 555,1));
             packageHandler.ILM_Table.Add(new ILM_Entry(499,13,3));
 
             Package package3 = new Package();

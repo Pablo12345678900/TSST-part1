@@ -121,14 +121,19 @@ namespace Node
                         }
                         
                         //swap
-                        package.labelStack.labels.Pop();
-                        
-                        foreach (ushort label in nhlfeEntry.labelsOut)
+
+                        if (package.labelStack.labels.Any())
                         {
-                            Label newLabel = new Label();
-                            newLabel.labelNumber = label;
-                            package.labelStack.labels.Push(newLabel);
+                            package.labelStack.labels.Pop();
+                        
+                            foreach (ushort label in nhlfeEntry.labelsOut)
+                            {
+                                Label newLabel = new Label();
+                                newLabel.labelNumber = label;
+                                package.labelStack.labels.Push(newLabel);
+                            }  
                         }
+                        
                         
                         // add '0' labels 
                         for (int i = 0; i < nhlfeEntry.popDepth; i++)
