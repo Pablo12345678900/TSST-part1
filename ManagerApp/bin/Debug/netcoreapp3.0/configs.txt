@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <configs>
+    <R_config>
+      <R_name>R1</R_name>
+      <Description>default</Description>
+      <FEC>
+        <FEC_Entry>
+          <destinationIP>10.0.0.1</destinationIP>
+          <FEC>1</FEC>
+        </FEC_Entry>
+        <FEC_Entry>
+          <destinationIP>90.19.21.2</destinationIP>
+          <FEC>2</FEC>
+        </FEC_Entry>
+      </FEC>
+      <FIB />
+      <FTN>
+        <FTN_Entry>
+          <NHLFE_ID>1</NHLFE_ID>
+          <FEC>1</FEC>
+        </FTN_Entry>
+        <FTN_Entry>
+          <NHLFE_ID>2</NHLFE_ID>
+          <FEC>2</FEC>
+        </FTN_Entry>
+      </FTN>
+      <ILM />
+      <NHLFE>
+        <NHLFE_Entry>
+          <NHLFE_ID>1</NHLFE_ID>
+          <action>push</action>
+          <labelsOut>
+            <unsignedShort>2</unsignedShort>
+            <unsignedShort>34</unsignedShort>
+          </labelsOut>
+          <portOut>6700</portOut>
+          <popDepth>0</popDepth>
+        </NHLFE_Entry>
+        <NHLFE_Entry>
+          <NHLFE_ID>2</NHLFE_ID>
+          <action>push</action>
+          <labelsOut>
+            <unsignedShort>43</unsignedShort>
+          </labelsOut>
+          <portOut>1000</portOut>
+          <popDepth>0</popDepth>
+        </NHLFE_Entry>
+      </NHLFE>
+    </R_config>
+    <R_config>
+      <R_name>R2</R_name>
+      <Description>default</Description>
+      <FEC />
+      <FIB>
+        <FIB_Entry>
+          <destinationIP>102.32.12.0</destinationIP>
+          <portOut>5678</portOut>
+        </FIB_Entry>
+        <FIB_Entry>
+          <destinationIP>103.22.12.0</destinationIP>
+          <portOut>5378</portOut>
+        </FIB_Entry>
+      </FIB>
+      <FTN />
+      <ILM>
+        <ILM_Entry>
+          <portIn>6000</portIn>
+          <labelIn>6</labelIn>
+          <NHLFE_ID>1</NHLFE_ID>
+        </ILM_Entry>
+      </ILM>
+      <NHLFE>
+        <NHLFE_Entry>
+          <NHLFE_ID>1</NHLFE_ID>
+          <action>pop</action>
+          <labelsOut>
+            <unsignedShort>43</unsignedShort>
+          </labelsOut>
+          <portOut>6701</portOut>
+          <popDepth>1</popDepth>
+        </NHLFE_Entry>
+      </NHLFE>
+    </R_config>
+  </configs>
+</Database>
