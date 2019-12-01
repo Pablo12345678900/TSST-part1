@@ -23,6 +23,7 @@ namespace Tools.Table_Entries
 
         public NHLFE_Entry()
         {
+         labelsOut = new List<ushort>();
         }
     }
 }
