@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
 
 namespace ManagerApp
@@ -8,11 +9,11 @@ namespace ManagerApp
     class Router_entry
     {
         public String Router_id;
-        public EndPoint Router_address;
+        public Socket Router_connection;
 
-        public Router_entry(String a, EndPoint b) {
+        public Router_entry(String a, Socket b) {
             Router_id = a;
-            Router_address = b;
+            Router_connection = b;
         }
     }
 

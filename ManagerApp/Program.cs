@@ -772,22 +772,11 @@ namespace ManagerApp
 
             try
             {
-                String endpointstring = Router_DB.Routers[Router_index].Router_address.ToString();
-
-                IPEndPoint remoteEP = IPEndPoint.Parse(endpointstring);
-
- 
-                Socket sender = new Socket(Router_DB.Routers[Router_index].Router_address.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
  
                 try
                 {
-                    sender.Connect(remoteEP);
 
-                    Console.WriteLine("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + "] " 
-                                            +"Connected to {0}", Router_DB.Routers[Router_index].Router_id);
-
+                    Socket sender = Router_DB.Routers[Router_index].Router_connection;
                     XmlSerializer serializer = new XmlSerializer(typeof(R_config));
                     StringWriter textWriter = new StringWriter();
 
@@ -796,14 +785,12 @@ namespace ManagerApp
  
                     byte[] msg = Encoding.ASCII.GetBytes(content);
   
-                    int bytesSent = sender.Send(msg);
+                   int bytesSent = sender.Send(msg);
 
                     Console.WriteLine("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
                                             CultureInfo.InvariantCulture) + "] "
                                             + "Configuration sent to " + Router_DB.Routers[Router_index].Router_id);
  
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
 
                 }
                 catch (ArgumentNullException ane)
@@ -924,7 +911,7 @@ namespace ManagerApp
 
 
 
-                    Router_entry RE = new Router_entry(content, handler.RemoteEndPoint);
+                    Router_entry RE = new Router_entry(content, handler);
                     Router_DB.Routers.Add(RE);
 
                     XmlSerializer serializer = new XmlSerializer(typeof(R_config));
@@ -971,8 +958,6 @@ namespace ManagerApp
 
                     int bytesSent = handler.EndSend(ar);
 
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
 
                 }
                 catch (Exception e)
