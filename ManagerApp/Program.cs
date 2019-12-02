@@ -934,10 +934,11 @@ namespace ManagerApp
                         serializer.Serialize(textWriter, config_DB.configs[index]);
                         content = textWriter.ToString();
                         Send(handler, content);
-                    }
+                    
                     Console.WriteLine("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
                         CultureInfo.InvariantCulture) + "] "
                         + "Default configuration sent to "+ name_r);
+                    }
 
                 }
             }
