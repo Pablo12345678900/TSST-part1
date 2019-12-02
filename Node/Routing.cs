@@ -79,7 +79,8 @@ namespace Node
             SocketToForward=new Socket(cloudIp.AddressFamily,SocketType.Stream,ProtocolType.Tcp);
             SocketToManager=new Socket(ManagerIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             
-            //SocketToForward.Connect(new IPEndPoint(cloudIp,cloudPort));
+            SocketToForward.Connect(new IPEndPoint(cloudIp,cloudPort));
+            SocketToForward.Send(Encoding.ASCII.GetBytes("First Message " + this.IpAddress.ToString()));
             SocketToManager.Connect(new IPEndPoint(ManagerIP, ManagerPort));
 
             byte[] buffer = new byte[256];
