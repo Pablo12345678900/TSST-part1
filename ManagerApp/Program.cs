@@ -46,7 +46,7 @@ namespace ManagerApp
                 );
             while (true)
             {
-                Console.WriteLine("Available commands: help, send, config");
+                Console.WriteLine("Available commands: help, send, config, sendall");
                 String option = Console.ReadLine();
                 switch (option)
                 {
@@ -58,6 +58,9 @@ namespace ManagerApp
                         break;
                     case "help":
                         Display_help();
+                        break;
+                    case "sendall":
+                        Sendall();
                         break;
                     default:
                         Console.WriteLine("Command not supported.");
@@ -783,6 +786,32 @@ namespace ManagerApp
                 }
             }
         }
+
+        public static void Sendall()
+        {
+            Console.WriteLine(">> You are now in the mass sending menu.");
+            Console.WriteLine("Input the description to send to all nodes with a described " +
+                "configuration or exit using \'q\':");
+            String option = Console.ReadLine();
+            if (option.Equals("q")) { return; }
+
+
+            for (int i = 0; i < config_DB.configs.Count(); i++)
+            {
+                if (config_DB.configs[i].Description.Equals(option))
+                {
+                    for (int k = 0; k < Router_DB.Routers.Count(); k++)
+                    {
+                        if (Router_DB.Routers[k].Router_id.Equals(config_DB.configs[i].R_name))
+                        {
+                            Send_config(k, i);
+                        }
+                    }
+
+                }
+            }
+        }
+
         public static void Send_config(int Router_index, int Config_index)
         {
 
