@@ -21,8 +21,9 @@ namespace ManagerApp
         static void Main(string[] args)
         {
             //Manager port
-            ManagerPort = 11000;
-
+            XmlSerializer serializer1 = new XmlSerializer(typeof(int));
+            FileStream fs1 = new FileStream("port.txt", FileMode.Open);
+            ManagerPort = (int)serializer1.Deserialize(fs1);
 
             //Uploading configuration data from a file
             XmlSerializer serializer = new XmlSerializer(typeof(Database));
@@ -446,7 +447,7 @@ namespace ManagerApp
                                     }
                                     else { Console.WriteLine("Input could not be parsed."); break; }
                                 }
-                                Console.WriteLine("Input \'1\' for action to be \'pop\' and \'2\' for action to be \'push\' or \'switch:\'," +
+                                Console.WriteLine("Input \'1\' for action to be \'pop\', \'2\' for action to be \'push\' or \'3\' for \'swap\'," +
                                     " or \'q\' to quit:");
                                 option = Console.ReadLine();
                                 if (option.Equals("q")) { break; }
@@ -457,6 +458,7 @@ namespace ManagerApp
                                     {
                                         case "1": newFEC.action = "pop"; break;
                                         case "2": newFEC.action = "push"; break;
+                                        case "3": newFEC.action = "swap"; break;
                                         default: Console.WriteLine("Incorrect input!"); flag = true; break;
                                     }
                                     if (flag) { break; }
@@ -490,7 +492,7 @@ namespace ManagerApp
 
                                 if (newFEC.action.Equals("push"))
                                 {
-                                    Console.WriteLine("Input labels to be pushed (one if switched), press ENTER after each one," +
+                                    Console.WriteLine("Input labels to be pushed, press ENTER after each one," +
                                         "to stop inputing, write \'last\'. The last label provided will be the top one. Use \'q\' to quit.");
                                     bool flag = false;
                                     int counter = 0;
@@ -510,7 +512,21 @@ namespace ManagerApp
                                     }
                                     if (flag) { break; }
                                 }
-                                else { newFEC.labelsOut.Add(0); }
+
+                                if (newFEC.action.Equals("swap"))
+                                {
+                                    Console.WriteLine("Input a label to be swapped to. Use \'q\' should you want to quit.");
+                                        Console.WriteLine("Input one label:");
+                                        option = Console.ReadLine();
+                                        if (option.Equals("q")) { break; }
+                                        if (ushort.TryParse(option, out ushort temp))
+                                        {
+                                            ushort temp_label = ushort.Parse(option);
+                                            newFEC.labelsOut.Add(temp_label);
+                                        }
+                                        else { Console.WriteLine("Input could not be parsed."); break; }
+                                    }
+
 
                                 config_DB.configs[index].NHLFE.Add(newFEC);
                                 Console.WriteLine("Entry added successfully!");
@@ -934,12 +950,11 @@ namespace ManagerApp
                         serializer.Serialize(textWriter, config_DB.configs[index]);
                         content = textWriter.ToString();
                         Send(handler, content);
-                    
-                    Console.WriteLine("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
-                        CultureInfo.InvariantCulture) + "] "
-                        + "Default configuration sent to "+ name_r);
-                    }
 
+                        Console.WriteLine("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                            CultureInfo.InvariantCulture) + "] "
+                            + "Default configuration sent to " + name_r);
+                    }
                 }
             }
 
