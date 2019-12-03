@@ -17,13 +17,7 @@ namespace Node
     {
         public string Name { get; set; }
         public IPAddress IpAddress { get; set; }
-        public List<NHLFE_Entry> NHLFE_Table { get; set; }
-        public List<ILM_Entry> ILM_Table { get; set; }
-        public List<FTN_Entry> FTN_Table { get; set; }
-        public List<FEC_Entry> FEC_Table { get; set; }
-        public List<FIB_Entry> FIB_Table { get; set; }
-        
-        
+
         public Socket SocketToForward { get; set; }
         public Socket SocketToManager { get; set; }
         public ushort Port { get; set; }
@@ -38,17 +32,13 @@ namespace Node
         public byte[] bufferForManagement = new byte[128];
         
         
-        PackageHandler _packageHandler=new PackageHandler();
+        PackageHandler packageHandler = new PackageHandler();
         public Routing(string n, IPAddress ip, ushort P)
         {
             Name = n;
             IpAddress = ip;
             Port = P;
-            ILM_Table = new List<ILM_Entry>();
-            FTN_Table = new List<FTN_Entry>();
-            FEC_Table = new List<FEC_Entry>();
-            FIB_Table = new List<FIB_Entry>();
-            NHLFE_Table = new List<NHLFE_Entry>();
+            
         }
 
         public static Routing createRouter(string conFile)
@@ -108,12 +98,13 @@ namespace Node
                         result = (R_config)serializer.Deserialize(reader);
                     }
                
-            ILM_Table = result.ILM;
-            FTN_Table = result.FTN;
-            FEC_Table = result.FEC;
-            FIB_Table = result.FIB;
-            NHLFE_Table = result.NHLFE;
-            
+            packageHandler.ILM_Table = result.ILM;
+            packageHandler.FTN_Table = result.FTN;
+            packageHandler.FEC_Table = result.FEC;
+            packageHandler.FIB_Table = result.FIB;
+            packageHandler.NHLFE_Table = result.NHLFE;
+
+            packageHandler.displayTables();
             
             
             SocketToForward.Connect(new IPEndPoint(cloudIp,cloudPort));
@@ -146,7 +137,9 @@ namespace Node
         {
             Package package = Package.returnToPackage(bytes);
             
-            _packageHandler.handlePackage(package);
+            package.printInfo();
+
+            packageHandler.handlePackage(package);
 
             SocketToForward.Send(package.convertToBytes());
             Console.WriteLine("I sent to cable cloud");
@@ -177,15 +170,17 @@ namespace Node
                     {
                         result = (R_config)serializer.Deserialize(reader);
                     }
-            ILM_Table = result.ILM;
-            FTN_Table = result.FTN;
-            FEC_Table = result.FEC;
-            FIB_Table = result.FIB;
-            NHLFE_Table = result.NHLFE;
+            packageHandler.ILM_Table = result.ILM;
+            packageHandler.FTN_Table = result.FTN;
+            packageHandler.FEC_Table = result.FEC;
+            packageHandler.FIB_Table = result.FIB;
+            packageHandler.NHLFE_Table = result.NHLFE;
+            
+            packageHandler.displayTables();
                 
             }
         }
-
-       
+        
+     
     }
 }

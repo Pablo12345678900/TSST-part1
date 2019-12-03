@@ -16,6 +16,37 @@ namespace Node
         public List<FEC_Entry> FEC_Table { get; set; }
         public List<FIB_Entry> FIB_Table { get; set; }
 
+        public void displayTables()
+        {    
+            Console.WriteLine("My tables:");
+            
+            Console.WriteLine("NHLFE_Table:");
+            foreach (var entry in NHLFE_Table)
+            {
+                entry.print();
+            }
+            Console.WriteLine("ILM_Table:");
+            foreach (var entry in ILM_Table)
+            {
+                entry.print();
+            }
+            Console.WriteLine("FTN_Table:");
+            foreach (var entry in FTN_Table)
+            {
+                entry.print();
+            }
+            Console.WriteLine("FEC_Table:");
+            foreach (var entry in FEC_Table)
+            {
+                entry.print();
+            }
+            Console.WriteLine("FIB_Table:");
+            foreach (var entry in FIB_Table)
+            {
+                entry.print();
+            }
+        }
+
         public PackageHandler()
         {
             NHLFE_Table = new List<NHLFE_Entry>();
@@ -265,5 +296,7 @@ namespace Node
 
             return fibEntry;
         }
+        
+        
     }
 }

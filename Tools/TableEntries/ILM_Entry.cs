@@ -1,3 +1,5 @@
+using System;
+
 namespace Tools.Table_Entries
 {
     public class ILM_Entry
@@ -14,5 +16,10 @@ namespace Tools.Table_Entries
         }
         
         public ILM_Entry() { }
+
+        public void print()
+        {
+            Console.WriteLine("portIn: " + portIn + " labelIn: " + labelIn + " NHLFE_ID: " + NHLFE_ID);
+        }
     }
 }

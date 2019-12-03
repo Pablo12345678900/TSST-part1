@@ -1,4 +1,4 @@
-using System.Net;
+using System;
 
 namespace Tools.Table_Entries
 {
@@ -14,5 +14,10 @@ namespace Tools.Table_Entries
         }
         
         public FEC_Entry() { }
+        
+        public void print()
+        {
+            Console.WriteLine("destinationIP: " + destinationIP + "FEC: " + FEC);
+        }
     }
 }
