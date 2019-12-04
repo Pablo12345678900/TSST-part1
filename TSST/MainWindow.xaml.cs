@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using Tools;
 using System.Data;
 using System.Threading;
+using System.Globalization;
 
 namespace TSST
 {
@@ -66,6 +67,8 @@ namespace TSST
                 
                 connectedSocket = new Socket(hostSource.cloudIP.AddressFamily, SocketType.Stream, ProtocolType.Tcp); // Stream uses TCP protocol
                 connectedSocket.Connect(new IPEndPoint(hostSource.cloudIP, hostSource.cloudPort)); //connect with server
+                Dispatcher.Invoke(() => ListBox12.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                            CultureInfo.InvariantCulture) + "] " + "I got connection with cable cloud"));
                 connectedSocket.Send(Encoding.ASCII.GetBytes("First Message " + hostSource.host_IP.ToString()));
 
             }
@@ -88,7 +91,9 @@ namespace TSST
                 {
                     connectedSocket.Receive(buffer);
                     Package package= Package.returnToPackage(buffer);
-                    Dispatcher.Invoke(() => ListBox12.Items.Add(package.payload));
+                    
+                    Dispatcher.Invoke(() =>ListBox12.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                            CultureInfo.InvariantCulture) + "] " + "I got message: "+package.payload+ " from: "+package.SourceAddress));
                     // if we receive-> Add log in HostWindow
                 }
                 catch (SocketException e)
@@ -132,8 +137,9 @@ namespace TSST
                     Dispatcher.Invoke(() => ListBox12.Items.Add("TRY SEND"));
                     byte [] buffer=package.convertToBytes();
                     connectedSocket.Send(buffer);
-                    Dispatcher.Invoke(() => ListBox12.Items.Add("Package sent"));
-                    
+                Dispatcher.Invoke(() => ListBox12.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                        CultureInfo.InvariantCulture) + "] " + "I sent message: " + package.payload + " to: " + package.DestinationAddress));
+
             }
             catch (Exception e)
                 {
@@ -162,6 +168,7 @@ namespace TSST
             hostdestination = (RestOfHosts)comboBox1.SelectedItem;
             unableButton();
         }
+        
        
     }
 }

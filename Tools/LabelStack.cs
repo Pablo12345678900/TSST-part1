@@ -52,7 +52,7 @@ namespace Tools
                     Label label = new Label //construction of label: | label_Number 2 bytes | TTL 1 byte | INFO 1 byte |
                     {
                         labelNumber = (ushort)((bytes[id + 1] << 8) + bytes[id]),
-                        TTL = (short)bytes[id + 2]
+                        TTL = bytes[id+2]
                     };
 
                     my_Stack.labels.Push(label);

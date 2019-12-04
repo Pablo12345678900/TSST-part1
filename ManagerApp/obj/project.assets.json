@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\M\\.nuget\\packages\\": {}
+    "C:\\Users\\pawer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\M\\source\\repos\\ManagerApp\\ManagerApp\\ManagerApp.csproj",
+      "projectUniqueName": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST-part1\\ManagerApp\\ManagerApp.csproj",
       "projectName": "ManagerApp",
-      "projectPath": "C:\\Users\\M\\source\\repos\\ManagerApp\\ManagerApp\\ManagerApp.csproj",
-      "packagesPath": "C:\\Users\\M\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\M\\source\\repos\\ManagerApp\\ManagerApp\\obj\\",
+      "projectPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST-part1\\ManagerApp\\ManagerApp.csproj",
+      "packagesPath": "C:\\Users\\pawer\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pawer\\Desktop\\C#-Learning\\TSST-part1\\ManagerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\M\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pawer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -52,13 +52,7 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

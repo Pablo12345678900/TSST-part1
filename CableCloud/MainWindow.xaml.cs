@@ -18,6 +18,7 @@ using Tools;
 using System.Data;
 using System.IO;
 using System.Threading;
+using System.Globalization;
 
 namespace CableCloud
 {
@@ -50,6 +51,7 @@ namespace CableCloud
         public Socket socketServer { get; set; }
         public Dictionary<Socket, IPAddress> SocketFromIP=new Dictionary<Socket, IPAddress>();
         public Dictionary<IPAddress,Socket> IPFromSocket=new Dictionary<IPAddress, Socket>();
+        public Cable cable;
         public MainWindow()
         {
             var args = Environment.GetCommandLineArgs();
@@ -57,7 +59,6 @@ namespace CableCloud
             try
             {
 
-                Console.WriteLine("Creating...");
 
                 cableCloud = Cloud.createCloud("DataForCloud.txt");
 
@@ -67,8 +68,16 @@ namespace CableCloud
                 Console.WriteLine("Failure, wrong arguments");
                 Environment.Exit(1);
             }
-
+            fillTheComboBox();
             Task.Run(RunCloudServer);
+        }
+
+        public void fillTheComboBox()
+        {
+            foreach(var cable in cableCloud.cables)
+            {
+                Cables.Items.Add(cable);
+            }
         }
 
         public void RunCloudServer()
@@ -76,14 +85,14 @@ namespace CableCloud
             // cloud is waiting for events            
 
             socketServer = new Socket(cableCloud.cloudIp.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            Console.WriteLine("Run Server1 " + cableCloud.cloudIp);
+            
             
             //Logs.Items.Add("Run Server2" + cableCloud.cloudIp + " " + cableCloud.cloudPort);
             try
             {
                 socketServer.Bind(new IPEndPoint(cableCloud.cloudIp, cableCloud.cloudPort)); //cloud is the server
                 
-                Console.WriteLine("Binded");
+ 
                
             }
             catch (Exception e)
@@ -95,7 +104,6 @@ namespace CableCloud
             while (true)
             {
                 thread1.Reset();
-                Console.WriteLine("Waiting for connection...");
                 socketServer.BeginAccept(new AsyncCallback(AcceptCallBack), socketServer);
                 thread1.WaitOne();
             }
@@ -124,6 +132,7 @@ namespace CableCloud
            try
            {
                 ReadBytes=handler.EndReceive(asyncResult);
+
            }
            catch (Exception e)
            {
@@ -139,26 +148,38 @@ namespace CableCloud
                IPAddress node=IPAddress.Parse(message[2]);
                SocketFromIP.TryAdd(handler, node);
                IPFromSocket.TryAdd(node, handler);
-               Console.WriteLine("Everything is correct, connection from " + node.ToString());
+                Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                              CultureInfo.InvariantCulture) + "] "  + node.ToString()+ " called in"));
            }
            else
            {
-               ForwardPackage(state, handler, asyncResult);
+                Package package = Package.returnToPackage(state.buffer);
+                Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                              CultureInfo.InvariantCulture) + "] "+ "I received package from " + package.CurrentNodeIP +":"+package.Port + "ID and payload" + package.messageID + " "+ package.payload));
+                ForwardPackage(state, handler, asyncResult, package);
            }
 
            state.sb.Clear();
            handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0, new AsyncCallback(ReceiveCallBack), state);
         }
 
-        public void ForwardPackage(StateObject stateObject, Socket handler, IAsyncResult asyncResult)
+        public void ForwardPackage(StateObject stateObject, Socket handler, IAsyncResult asyncResult, Package recPackage)
         {
-            Package recPackage=Package.returnToPackage(stateObject.buffer);
+            
+            
+            //Package recPackage=Package.returnToPackage(stateObject.buffer);
             IPAddress node1 = SocketFromIP[handler];
             ushort port1 = recPackage.Port;
-            Console.WriteLine(node1.ToString() + " " +port1.ToString());
+            //Console.WriteLine(node1.ToString() + " " +port1.ToString());
             for (int i = 0; i < cableCloud.cables.Count; i++)
             {
-                if ((cableCloud.cables[i].Node1.Equals(node1) &&  cableCloud.cables[i].port1.Equals(port1)))
+                if ((cableCloud.cables[i].Node1.Equals(node1) && cableCloud.cables[i].port1.Equals(port1)) && cableCloud.cables[i].stateOfCable==false)
+                {
+                    Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                            CultureInfo.InvariantCulture) + "] " + "Cable is destroyed, package discarded"));
+                    break;
+                }
+                    if ((cableCloud.cables[i].Node1.Equals(node1) &&  cableCloud.cables[i].port1.Equals(port1)) && cableCloud.cables[i].stateOfCable)
                 {
 
                     recPackage.CurrentNodeIP = cableCloud.cables[i].Node2;
@@ -166,24 +187,25 @@ namespace CableCloud
                     Socket socket = IPFromSocket[recPackage.CurrentNodeIP];
                     socket.BeginSend(recPackage.convertToBytes(), 0, recPackage.convertToBytes().Length, 0,
                         new AsyncCallback(SendCallBack), socket);
-                    Console.WriteLine("Found cable and sent " + cableCloud.cables[i].Node2.ToString() + " " +cableCloud.cables[i].port2.ToString());
+                    Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                             CultureInfo.InvariantCulture) + "] " + "I sent message: ID-> " + recPackage.messageID + "payload: " + recPackage.payload + " to: " + recPackage.CurrentNodeIP + " on port: " + recPackage.Port));
                     break;
 
 
                 }
 
-                if ( cableCloud.cables[i].Node2.Equals(node1) &&   cableCloud.cables[i].port2.Equals(port1))
+                if ( (cableCloud.cables[i].Node2.Equals(node1) &&   cableCloud.cables[i].port2.Equals(port1)) && cableCloud.cables[i].stateOfCable)
                 {
                     recPackage.CurrentNodeIP = cableCloud.cables[i].Node1;
                     recPackage.Port = cableCloud.cables[i].port1;
                     Socket socket = IPFromSocket[recPackage.CurrentNodeIP];
                     socket.BeginSend(recPackage.convertToBytes(), 0, recPackage.convertToBytes().Length, 0,
                         new AsyncCallback(SendCallBack), socket);
-                    Console.WriteLine("Found cable and sent " + cableCloud.cables[i].Node1.ToString() + " " +cableCloud.cables[i].port1.ToString());
+                    Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                             CultureInfo.InvariantCulture) + "] " + "I sent message: ID-> " +recPackage.messageID+ "payload: " + recPackage.payload + " to: " + recPackage.CurrentNodeIP+" on port: " + recPackage.Port)); 
                     break;
                 }
             }
-            
         }
 
         public void SendCallBack(IAsyncResult asyncResult)
@@ -192,6 +214,32 @@ namespace CableCloud
             Socket handler = (Socket)asyncResult.AsyncState;
             // Complete sending the data to the remote device.  
             handler.EndSend(asyncResult);
+        }
+        public void unableButton()
+        {
+            Destroy.IsEnabled = Cables.SelectedItem != null;
+        }
+
+        private void Destroy_Click(object sender, RoutedEventArgs e)
+        {
+
+            //cable = (Cable)Cables.SelectedItem;
+            cable.stateOfCable = false;
+            Cables.SelectedItem = null;
+            unableButton();
+        }
+
+        private void Cables_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cable = (Cable)Cables.SelectedItem;
+            unableButton();
+        }
+
+        private void Repair_Click(object sender, RoutedEventArgs e)
+        {
+            cable.stateOfCable = true;
+            Cables.SelectedItem = null;
+            unableButton();
         }
     }
     

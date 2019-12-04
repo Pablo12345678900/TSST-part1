@@ -76,23 +76,6 @@ namespace Tools
             Console.WriteLine("Your payload: " +myPackage.payload);
             return myPackage;
         }
-        
-        public void printInfo()
-        {
-            Console.WriteLine("Message Id: " + messageID + " Source: " + SourceAddress + "Destination: " +
-                              DestinationAddress);
-            Console.Write( "Labels: ");
-                
-            if (labelStack.labels != null)
-            {
-                foreach (Label label in labelStack.labels)
-                {
-                    Console.Write(label.labelNumber + " ");
-                }
-            }
-
-            Console.WriteLine("Port " + Port );
-        }
 
     }
 }

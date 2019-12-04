@@ -1,5 +1,3 @@
-using System;
-
 namespace Tools.Table_Entries
 {
     public class FTN_Entry
@@ -14,10 +12,5 @@ namespace Tools.Table_Entries
         }
         
         public FTN_Entry() { }
-
-        public void print()
-        {
-            Console.WriteLine("FEC: " + FEC + "NHLFE_ID: " + NHLFE_ID);
-        }
     }
 }

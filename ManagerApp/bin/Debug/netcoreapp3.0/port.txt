@@ -1,2 +1,2 @@
 <?xml version="1.0"?>
-<int>1100</int>
+<int>60000</int>

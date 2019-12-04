@@ -8,7 +8,7 @@ namespace Tools
     {
         //length of MPLS Label is 4 bytes where TTL is 1 byte 1 byte is informative and rest belongs to the Label
         public ushort labelNumber { get; set; }
-        public short TTL { get; set; }
+        public byte TTL { get; set; }
 
 
         public Label()
@@ -23,8 +23,8 @@ namespace Tools
         {
             List<byte> bytedLabel = new List<byte>();
             bytedLabel.AddRange(BitConverter.GetBytes(labelNumber));
-            bytedLabel.AddRange(BitConverter.GetBytes(TTL));
-            Console.WriteLine(bytedLabel.ToArray().Length);
+            bytedLabel.Add(TTL);
+           // Console.WriteLine(bytedLabel.ToArray().Length);
             return bytedLabel.ToArray();
         }
         public Label GetBytesAsLabel(byte[] bytes)
@@ -32,7 +32,7 @@ namespace Tools
             Label label = new Label();
 
             label.labelNumber = (ushort)((bytes[1] << 8) + bytes[0]);
-            label.TTL = (short)bytes[2];
+            label.TTL = bytes[2];
 
             return label;
         }

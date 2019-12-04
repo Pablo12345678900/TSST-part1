@@ -39,7 +39,7 @@ namespace CableCloud
                 IPAddress ip2 = IPAddress.Parse(line.Split(' ')[1]);
                 line = streamReader.ReadLine();
                 ushort port2 = ushort.Parse(line.Split(' ')[1]);
-                Cable cable = new Cable(ip1, ip2, port1, port2, "WORKING");
+                Cable cable = new Cable(ip1, ip2, port1, port2);
                 cloud.cables.Add(cable);
             }
           

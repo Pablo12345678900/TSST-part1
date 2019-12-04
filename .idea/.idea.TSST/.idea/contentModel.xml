@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\pawer\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\pawer\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_TSST.-288001262.00" t="ExcludeRecursive" />
+    <e p="C:\Users\pawer\Desktop\C#-Learning\TSST-part1" t="IncludeFlat">
       <e p="CableCloud" t="IncludeRecursive">
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
@@ -13,40 +15,48 @@
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="CableCloud.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
       </e>
-      <e p="Manager" t="IncludeRecursive">
+      <e p="ManagerApp" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="configs.txt" t="Include" />
         <e p="Database.cs" t="Include" />
-        <e p="Manager.cs" t="Include" />
-        <e p="Manager.csproj" t="IncludeRecursive" />
+        <e p="FEC_Entry.cs" t="Include" />
+        <e p="FIB_Entry.cs" t="Include" />
+        <e p="FTN_Entry.cs" t="Include" />
+        <e p="ILM_Entry.cs" t="Include" />
+        <e p="ManagerApp.csproj" t="IncludeRecursive" />
+        <e p="NHLFE_Entry.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp3.0" t="Include">
-              <e p="Manager.AssemblyInfo.cs" t="Include" />
+              <e p="ManagerApp.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="Program.cs" t="Include" />
         <e p="R_config.cs" t="Include" />
+        <e p="Router_Database.cs" t="Include" />
+        <e p="Router_entry.cs" t="Include" />
       </e>
       <e p="Node" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Node.csproj" t="IncludeRecursive" />
         <e p="NodeProgram.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="Node.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
         </e>
         <e p="PackageHandler.cs" t="Include" />
+        <e p="R_config.cs" t="Include" />
         <e p="Routing.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
@@ -55,7 +65,7 @@
         <e p="Label.cs" t="Include" />
         <e p="LabelStack.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
+          <e p="Release" t="Include">
             <e p="netstandard2.0" t="Include">
               <e p="Tools.AssemblyInfo.cs" t="Include" />
             </e>
@@ -93,7 +103,5 @@
       </e>
       <e p="TSST.sln" t="IncludeFlat" />
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.2/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_TSST.1926402653.00" t="ExcludeRecursive" />
   </component>
 </project>

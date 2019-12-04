@@ -16,37 +16,6 @@ namespace Node
         public List<FEC_Entry> FEC_Table { get; set; }
         public List<FIB_Entry> FIB_Table { get; set; }
 
-        public void displayTables()
-        {    
-            Console.WriteLine("My tables:");
-            
-            Console.WriteLine("NHLFE_Table:");
-            foreach (var entry in NHLFE_Table)
-            {
-                entry.print();
-            }
-            Console.WriteLine("ILM_Table:");
-            foreach (var entry in ILM_Table)
-            {
-                entry.print();
-            }
-            Console.WriteLine("FTN_Table:");
-            foreach (var entry in FTN_Table)
-            {
-                entry.print();
-            }
-            Console.WriteLine("FEC_Table:");
-            foreach (var entry in FEC_Table)
-            {
-                entry.print();
-            }
-            Console.WriteLine("FIB_Table:");
-            foreach (var entry in FIB_Table)
-            {
-                entry.print();
-            }
-        }
-
         public PackageHandler()
         {
             NHLFE_Table = new List<NHLFE_Entry>();
@@ -152,19 +121,14 @@ namespace Node
                         }
                         
                         //swap
-
-                        if (package.labelStack.labels.Any())
+                        package.labelStack.labels.Pop();
+                        
+                        foreach (ushort label in nhlfeEntry.labelsOut)
                         {
-                            package.labelStack.labels.Pop();
-                        
-                            foreach (ushort label in nhlfeEntry.labelsOut)
-                            {
-                                Label newLabel = new Label();
-                                newLabel.labelNumber = label;
-                                package.labelStack.labels.Push(newLabel);
-                            }  
+                            Label newLabel = new Label();
+                            newLabel.labelNumber = label;
+                            package.labelStack.labels.Push(newLabel);
                         }
-                        
                         
                         // add '0' labels 
                         for (int i = 0; i < nhlfeEntry.popDepth; i++)
@@ -296,7 +260,5 @@ namespace Node
 
             return fibEntry;
         }
-        
-        
     }
 }
