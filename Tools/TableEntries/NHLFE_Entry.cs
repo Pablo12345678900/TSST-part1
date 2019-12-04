@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Tools.Table_Entries
@@ -24,6 +25,17 @@ namespace Tools.Table_Entries
         public NHLFE_Entry()
         {
          labelsOut = new List<ushort>();
+        }
+
+        public void print()
+        {
+            string tableEntry = (" ID: " + NHLFE_ID + " action: " + action + " portOut: " + portOut + " popDepth: " +  popDepth + " labelsOut: ");
+            foreach (var label in labelsOut)
+            {
+                tableEntry += (" " + label);
+            }
+            
+            Console.WriteLine(tableEntry);
         }
     }
 }

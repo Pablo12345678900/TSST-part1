@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 
 namespace Tools.Table_Entries
@@ -14,5 +15,10 @@ namespace Tools.Table_Entries
         }
         
         public FIB_Entry() { }
+        
+        public void print()
+        {
+            Console.WriteLine(" destinationIP: " + destinationIP + "portOut: " + portOut);
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace Tools
             labelStack = new LabelStack();
             TTL = 255; // default value
             
-
         }
 
         public byte[] convertToBytes()
@@ -73,8 +72,31 @@ namespace Tools
                 .GetRange(length_of_stack + 24, myPackage.package_length - headerLength));
 
             myPackage.payload = Encoding.ASCII.GetString(listForPayload.ToArray());
-            Console.WriteLine("Your payload: " +myPackage.payload);
+            //Console.WriteLine("Your payload: " +myPackage.payload);
             return myPackage;
+        }
+        
+        public void printInfo()
+        {
+            Console.WriteLine("Message Id: " + messageID + " Source: " + SourceAddress + " Destination: " +
+                              DestinationAddress);
+            Console.WriteLine("Payload: " + payload);
+                
+            if (labelStack.labels != null)
+            {
+                Console.Write( "Labels: ");
+                foreach (Label label in labelStack.labels)
+                {
+                    Console.Write(label.labelNumber + " ");
+                }
+            }
+            else
+            {
+                Console.Write("LabelStack empty");
+            }
+            
+            Console.WriteLine("\n ");
+
         }
 
     }
