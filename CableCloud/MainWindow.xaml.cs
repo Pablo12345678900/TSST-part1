@@ -179,6 +179,13 @@ namespace CableCloud
                                             CultureInfo.InvariantCulture) + "] " + "Cable is destroyed, package discarded"));
                     break;
                 }
+                if ((cableCloud.cables[i].Node2.Equals(node1) && cableCloud.cables[i].port2.Equals(port1)) &&
+                    cableCloud.cables[i].stateOfCable == false)
+                {
+                    Dispatcher.Invoke(() => Logs.Items.Add("[" + DateTime.UtcNow.ToString("HH:mm:ss.fff",
+                                                               CultureInfo.InvariantCulture) + "] " + "Cable is destroyed, package discarded"));
+                    break;
+                }
                     if ((cableCloud.cables[i].Node1.Equals(node1) &&  cableCloud.cables[i].port1.Equals(port1)) && cableCloud.cables[i].stateOfCable)
                 {
 
